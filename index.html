@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>10IA Sites</title>
+
+        <meta charset="UTF-8">
+        <meta name="author" content="Campbell Wood">
+        <meta name="description" content="A site to host all of 10IA online links">
+
+        <!-- CSS -->
+        <link href="main.css" type="text/css" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1>Welcome to 10-IA</h1>
+        <table id="holder">
+            <tr class="bold">
+                <th>Name</th>
+                <th>Company Link</th>
+            </tr>
+        </table>
+
+
+        <!-- Sorting function to sort the table -->
+        <script>
+            function sort(a, b, type) {
+                if (type === 'alphaAsc') {
+                    return (a.innerHTML.toLowerCase() > y.innerHTML.toLowerCase())
+                } else if (type === 'alphaDes') {
+                    return (a.innerHTML.toLowerCase() < y.innerHTML.toLowerCase())
+                }
+            }
+            function sortTable(type) {
+                var table, rows, switching, i, x, y, shouldSwitch;
+                table = document.getElementById('holder');
+
+                var switching = true;
+
+                /* Loop that continue switches */
+                while (switching) {
+                    // start by saying switching is done
+                    switching = false;
+                    rows = table.rows;
+
+                    for (i = 1; i < rows.length - 1; i++) {
+                        shouldSwitch = false;
+                        x = rows[i].getElementByTagName('ID')[0];
+                        y = rows[i + 1].getElementsByTagName("TD")[0];
+
+                        if (sort(x, y, 'alphaAsc')) { // actually compare
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
+                    switching = false;
+                }
+            }
+        </script>
+        
+        <!-- Request all sites for status -->
+        <script>
+            var rawFile = new XMLHttpRequest();
+
+            rawFile.open("GET", "sites.json", true);
+            rawFile.onreadystatechange = function() {
+                if (rawFile.readyState === 4) {
+                    var allText = JSON.parse(rawFile.responseText);
+
+                    for (i = 0; i < allText.length; i++) {
+                        console.log(i, allText[i]);
+                        var web = new XMLHttpRequest();
+                        //web.open("GET", allText[i][0], true);
+                        //web.onreadystatechange = function() {
+                            //if (web.readyState === 4) {
+                                // create the table, since web is up
+                                console.log('website online');
+                                var node = document.createElement("tr")
+                                var name = document.createElement("th")
+                                var link = document.createElement("th")
+                                var atag = document.createElement("a")
+
+                                name.innerHTML = allText[i][1]
+                                atag.innerHTML = allText[i][2]
+                                atag.href = allText[i][0]
+
+                                node.appendChild(name);
+                                node.appendChild(link);
+                                link.appendChild(atag);
+
+                                document.getElementById('holder').appendChild(node)
+                            //}
+                        //}
+                    }
+
+                    web.send();
+                }
+            }
+
+            rawFile.send();
+        </script>
+
+    </body>
+</html>
+
