@@ -73,9 +73,9 @@
                     for (i = 0; i < allText.length; i++) {
                         console.log(i, allText[i]);
                         var web = new XMLHttpRequest();
-                        web.open("GET", allText[i][0], true);
-                        web.onreadystatechange = function() {
-                            if (web.readyState === 4) {
+                        //web.open("GET", allText[i][0], true);
+                        //web.onreadystatechange = function() {
+                            //if (web.readyState === 4) {
                                 // create the table, since web is up
                                 console.log('website online');
                                 var node = document.createElement("tr")
@@ -83,20 +83,20 @@
                                 var link = document.createElement("th")
                                 var atag = document.createElement("a")
 
-                                atag.href = allText[i][0]
                                 name.innerHTML = allText[i][1]
                                 atag.innerHTML = allText[i][2]
+                                atag.href = allText[i][0]
 
                                 node.appendChild(name);
                                 node.appendChild(link);
                                 link.appendChild(atag);
 
                                 document.getElementById('holder').appendChild(node)
-                            }
-                        }
-                    web.send();
+                            //}
+                        //}
                     }
 
+                    web.send();
                 }
             }
 
