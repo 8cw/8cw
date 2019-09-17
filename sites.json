@@ -1,9 +1,9 @@
 [
-    [ "http://xa-iscream.herokuapp.com", "Campbell - Jared", "I Scream Gaming - XA Games" ],
-    [ "http://neon42games2.herokuapp.com", "Notus Rivers", "Neon 42 Games" ],
-    [ "http://ging0.herokuapp.com", "Garv Singh", "Ging0 Gaming" ],
-    [ "http://sapphiregaming.herokuapp.com", "Aiyush Gopal", "Sapphire Gaming" ],
-    [ "http://camacorporation.herokuapp.com", "Caleb Mathew", "Cama Corporation" ],
-    [ "http://turtlegames.herokuapp.com", "Savinu Mathusinghe", "Turtle Games" ],
-    [ "http://ilducesenegalgang.herokuapp.com/", "Hyung-Min Kim", "ILDUCE"]
+    [ "http://xa-iscream.herokuapp.com", "Campbell - Jared", "I Scream Gaming - XA Games", "http://xa-iscream.herokuapp.com" ],
+    [ "http://neon42games2.herokuapp.com", "Notus Rivers", "Neon 42 Games", "http://neon42games2.herokuapp.com" ],
+    [ "http://ging0.herokuapp.com", "Garv Singh", "Ging0 Gaming", "http://ging0.herokuapp.com" ],
+    [ "http://sapphiregaming.herokuapp.com", "Aiyush Gopal", "Sapphire Gaming", "http://sapphiregaming.herokuapp.com" ],
+    [ "http://camacorporation.herokuapp.com", "Caleb Mathew", "Cama Corporation", "http://camacorporation.herokuapp.com" ],
+    [ "http://turtlegames.herokuapp.com", "Savinu Mathusinghe", "Turtle Games", "http://turtlegames.herokuapp.com" ],
+    [ "http://ilducesenegalgang.herokuapp.com/", "Hyung-Min Kim", "ILDUCE", "https://ilducesenegalgang.herokuapp.com/" ]
 ]
