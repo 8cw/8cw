@@ -93,7 +93,7 @@
                                 document.getElementById('holder').appendChild(node)
                             }
                         }
-                        web.open("GET", allText[i][0], true);
+                        web.open("GET", allText[i][3], true);
                         web.setRequestHeader("Content-Type", "application/json");
                         web.send({ 'request': "hi" });
                     }
@@ -107,3 +107,4 @@
 
     </body>
 </html>
+
