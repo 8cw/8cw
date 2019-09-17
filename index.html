@@ -65,44 +65,45 @@
         <script>
             var rawFile = new XMLHttpRequest();
 
-            rawFile.open("GET", "sites.json", true);
             rawFile.onreadystatechange = function() {
                 if (rawFile.readyState === 4) {
                     var allText = JSON.parse(rawFile.responseText);
+                    console.log(allText);
 
                     for (i = 0; i < allText.length; i++) {
                         console.log(i, allText[i]);
                         var web = new XMLHttpRequest();
-                        //web.open("GET", allText[i][0], true);
-                        //web.onreadystatechange = function() {
-                            //if (web.readyState === 4) {
+                        web.onreadystatechange = function() {
+                            if (web.readyState === 4 || web.status === 200) {
                                 // create the table, since web is up
                                 console.log('website online');
-                                var node = document.createElement("tr")
-                                var name = document.createElement("th")
-                                var link = document.createElement("th")
-                                var atag = document.createElement("a")
+                                var node = document.createElement("tr");
+                                var name = document.createElement("th");
+                                var link = document.createElement("th");
+                                var atag = document.createElement("a");
 
-                                name.innerHTML = allText[i][1]
-                                atag.innerHTML = allText[i][2]
-                                atag.href = allText[i][0]
+                                name.innerHTML = allText[i][1];
+                                atag.innerHTML = allText[i][2];
+                                atag.href = allText[i][0];
 
                                 node.appendChild(name);
                                 node.appendChild(link);
                                 link.appendChild(atag);
 
                                 document.getElementById('holder').appendChild(node)
-                            //}
-                        //}
+                            }
+                        }
+                        web.open("GET", allText[i][0], true);
+                        web.setRequestHeader("Content-Type", "application/json");
+                        web.send({ 'request': "hi" });
                     }
-
-                    web.send();
                 }
             }
+            rawFile.open("GET", "sites.json", true);
+            
 
             rawFile.send();
         </script>
 
     </body>
 </html>
-
