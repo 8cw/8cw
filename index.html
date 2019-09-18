@@ -9,6 +9,7 @@
 
         <!-- CSS -->
         <link href="main.css" type="text/css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </head>
 
     <body>
@@ -63,46 +64,68 @@
         
         <!-- Request all sites for status -->
         <script>
+            function createCORSRequest(method, url) {
+                let xhr = new XMLHttpRequest();
+                if ("withCredentials" in xhr) {    
+                    // Check if the XMLHttpRequest object has a "withCredentials" property.
+                    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+                    xhr.open(method, url, true);    
+                } 
+                else if (typeof XDomainRequest != "undefined") {    
+                    // Otherwise, check if XDomainRequest.
+                    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+                    xhr = new XDomainRequest();
+                    xhr.open(method, url);    
+                } 
+                else {    
+                    // Otherwise, CORS is not supported by the browser.
+                    xhr = null;    
+                }
+                return xhr;
+            }
+
+
             var rawFile = new XMLHttpRequest();
 
             rawFile.onreadystatechange = function() {
                 if (rawFile.readyState === 4) {
                     var allText = JSON.parse(rawFile.responseText);
-                    console.log(allText);
 
                     for (i = 0; i < allText.length; i++) {
-                        console.log(i, allText[i]);
-                        var web = new XMLHttpRequest();
-                        web.onreadystatechange = function() {
-                            if (web.readyState === 4 || web.status === 200) {
-                                // create the table, since web is up
-                                console.log('website online');
-                                var node = document.createElement("tr");
-                                var name = document.createElement("th");
-                                var link = document.createElement("th");
-                                var atag = document.createElement("a");
+                        const data = allText[i];
+                        const request = createCORSRequest('GET', allText[i][3]);
 
-                                name.innerHTML = allText[i][1];
-                                atag.innerHTML = allText[i][2];
-                                atag.href = allText[i][0];
-
-                                node.appendChild(name);
-                                node.appendChild(link);
-                                link.appendChild(atag);
-
-                                document.getElementById('holder').appendChild(node)
-                            }
+                        if (!request) {
+                            throw new Error('CORS not supported');
                         }
-                        web.open("GET", allText[i][3], true);
-                        web.setRequestHeader("Content-Type", "application/json");
-                        web.send({ 'request': "hi" });
+
+                        request.onload = function() {
+                            var node = document.createElement("tr");
+                            var name = document.createElement("th");
+                            var link = document.createElement("th");
+                            var atag = document.createElement("a");
+                            name.innerHTML = data[1];
+                            atag.innerHTML = data[2];
+                            atag.href = data[0];
+                            node.appendChild(name);
+                            node.appendChild(link);
+                            link.appendChild(atag);
+                            document.getElementById('holder').appendChild(node)
+                        }
+                        request.onerror = function() {
+                            console.log('There was an error');
+                        }
+
+                        request.send();
                     }
                 }
             }
             rawFile.open("GET", "sites.json", true);
             
 
-            rawFile.send();
+            $(document).ready(function() {
+                rawFile.send();
+            })
         </script>
 
     </body>
