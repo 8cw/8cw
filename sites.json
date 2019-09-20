@@ -4,10 +4,9 @@
     [ "http://ging0.herokuapp.com", "Garv Singh", "Ging0 Gaming", "https://ging0.herokuapp.com" ],
     [ "http://sapphiregaming.herokuapp.com", "Aiyush Gopal", "Sapphire Gaming", "https://sapphiregaming.herokuapp.com" ],
     [ "http://camacorporation.herokuapp.com", "Caleb Mathew", "Cama Corporation", "https://camacorporation.herokuapp.com" ],
-    [ "http://turtlegames.herokuapp.com", "Savinu Mathusinghe", "uwu owo uwu", "https://turtlegames.herokuapp.com" ],
-    [ "http://ilducesenegalgang.herokuapp.com/", "Hyung-Min Kim", "uwu owo uwu", "https://ilducesenegalgang.herokuapp.com/" ],
-    [ "http://sentoarena.herokuapp.com", "Alex Sok", "uwu owo uwu", "https://sentoarena.herokuapp.com" ],
-    [ "http://essentialgaming.herokuapp.com", "Darryl De Jong - Abhishek Dey", "uwu owo uwu", "https://essentialgaming.herokuapp.com" ],
-    [ "http://shahanshah.herokuapp.com", "Jameel Khan", "Shahanshah", "https://shahanshah.herokuapp.com" ],
-    [ "http://balance-gaming.herokuapp.com", "Zacky Harris - Seiga Ikemura", "uwu owo uwu", "https://balance-gaming.herokuapp.com" ]
+    [ "http://turtlegames.herokuapp.com", "Savinu Mathusinghe", "Turtle Games", "https://turtlegames.herokuapp.com" ],
+    [ "http://ilducesenegalgang.herokuapp.com/", "Hyung-Min Kim", "ILDUCE", "https://ilducesenegalgang.herokuapp.com/" ],
+    [ "http://sentoarena.herokuapp.com", "Alex Sok", "Myriad", "https://sentoarena.herokuapp.com" ],
+    [ "http://essentialgaming.herokuapp.com", "Darryl De Jong - Abhishek Dey", "Essential Gaming", "https://essentialgaming.herokuapp.com" ],
+    [ "http://shahanshah.herokuapp.com", "Jameel Khan", "SHAHANSHAH", "https://shahanshah.herokuapp.com" ]
 ]
